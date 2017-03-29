@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<mvc:annotation-driven />
+	<context:spring-configured />
+
+	<context:component-scan base-package="com.bdna."></context:component-scan>
+	<context:annotation-config>
+
+	</context:annotation-config>
+
+	<aop:spring-configured />
+
+	<tx:annotation-driven transaction-manager="txManagerSqlServer" />
+	<!-- <tx:annotation-driven /> -->
+
+
+
+
+	<!-- Hibernate Configurations -->
+
+	<bean id="sqlServerDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${database.sqlserver.driverName}" />
+		<property name="url" value="${database.sqlserver.url}" />
+		<property name="username" value="${database.sqlserver.username}" />
+		<property name="password" value="${database.sqlserver.password}" />
+	</bean>
+
+
+	<bean id="sessionFactorySqlServer"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="sqlServerDataSource" />
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.bdna.automation.entity.BdnaTechnopediaTag</value>
+			</list>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect
+				</prop>
+				<prop key="hibernate.default_schema">BDNA_PUBLISH.dbo</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+				<prop key="use_sql_comments">true</prop>
+				<prop key="format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Transaction Management -->
+
+	<bean id="txManagerSqlServer"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		lazy-init="true">
+		<property name="dataSource" ref="sqlServerDataSource" />
+		<property name="sessionFactory" ref="sessionFactorySqlServer" />
+	</bean>
+
+
+	<bean id="sqlServerDIMDao" class="com.bdna.automation.dao.impl.SQLServerDIMDaoImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactorySqlServer" />
+		</property>
+	</bean>
+
+
+
+</beans>
