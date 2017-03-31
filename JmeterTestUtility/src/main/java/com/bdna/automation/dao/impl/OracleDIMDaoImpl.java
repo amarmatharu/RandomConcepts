@@ -46,6 +46,7 @@ public class OracleDIMDaoImpl extends HibernateDaoSupport {
 		Session session = sessionFactoryOracle.getCurrentSession();
 		SQLQuery sqlQuery = session.createSQLQuery(query);
 		BigDecimal result = (BigDecimal) sqlQuery.list().get(0);
+		System.out.println("Count for Oracle: " + result);
 		return result.intValue();
 
 	}

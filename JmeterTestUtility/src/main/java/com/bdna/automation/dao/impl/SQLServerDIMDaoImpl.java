@@ -1,6 +1,5 @@
 package com.bdna.automation.dao.impl;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import com.bdna.automation.entity.BdnaTechnopediaTag;
 public class SQLServerDIMDaoImpl extends HibernateDaoSupport {
 
 	@Autowired
-	@Qualifier(value="sessionFactorySqlServer")
+	@Qualifier(value = "sessionFactorySqlServer")
 	private SessionFactory sessionFactorySqlServer;
 
 	public List<BdnaTechnopediaTag> getBDNATechnopediaTag() {
@@ -40,6 +39,7 @@ public class SQLServerDIMDaoImpl extends HibernateDaoSupport {
 		Session session = sessionFactorySqlServer.getCurrentSession();
 		SQLQuery sqlQuery = session.createSQLQuery(query);
 		Integer result = (Integer) sqlQuery.list().get(0);
+		System.out.println("Count for SQL Server: " + result);
 		return result.intValue();
 
 	}
