@@ -2,19 +2,20 @@ package com.bdna.automation.service;
 
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDIMDaoImpl;
 import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
-import org.apache.log4j.Logger;
+
 
 @Service
 public class DimTableService {
 	
-	private static final Logger LOGGER = Logger
-			.getLogger(DimTableService.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(DimTableService.class.getName());
 	@Autowired
 	private OracleDIMDaoImpl oracleDIMDaoImpl;
 
