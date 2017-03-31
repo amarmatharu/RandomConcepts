@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ import com.bdna.automation.entity.BdnaTechnopediaTag;
 public class OracleDIMDaoImpl extends HibernateDaoSupport {
 
 	@Autowired
+	@Qualifier(value="sessionFactoryOracle")
 	private SessionFactory sessionFactoryOracle;
 
 	public void test() {

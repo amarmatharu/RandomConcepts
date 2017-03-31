@@ -31,7 +31,7 @@ public class SQLServerDIMDaoImplTest {
 	@Test
 	public void getCount() {
 
-		String query = "select count(*) from AGG_N_IT_ASSETS_HW";
+		String query = "select count(*) from bdna_a_logger";
 		int result = sqlServerDIMDao.getCount(query);
 		System.out.println("Result : " + result);
 	}

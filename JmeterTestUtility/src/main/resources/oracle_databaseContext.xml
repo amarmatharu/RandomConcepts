@@ -33,7 +33,7 @@
 
 	<!-- Hibernate Configurations -->
 
-	<bean id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource" primary="true">
+	<bean id="oracleDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${database.oracle.driverName}" />
 		<property name="url" value="${database.oracle.url}" />
 		<property name="username" value="${database.oracle.username}" />
@@ -42,7 +42,7 @@
 
 
 	<bean id="sessionFactoryOracle"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" primary="true">
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
 		<property name="dataSource">
 			<ref local="oracleDataSource" />
 		</property>
@@ -70,7 +70,7 @@
 
 	<bean id="txManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
-		lazy-init="true" primary="true">
+		lazy-init="true" >
 		<property name="dataSource" ref="oracleDataSource" />
 		<property name="sessionFactory" ref="sessionFactoryOracle" />
 	</bean>

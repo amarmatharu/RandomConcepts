@@ -33,7 +33,7 @@
 
 	<!-- Hibernate Configurations -->
 
-	<bean id="sqlServerDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="sqlServerDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${database.sqlserver.driverName}" />
 		<property name="url" value="${database.sqlserver.url}" />
 		<property name="username" value="${database.sqlserver.username}" />

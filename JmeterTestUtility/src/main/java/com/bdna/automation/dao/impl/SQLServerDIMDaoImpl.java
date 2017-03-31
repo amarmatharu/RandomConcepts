@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,8 @@ import com.bdna.automation.entity.BdnaTechnopediaTag;
 @Transactional
 public class SQLServerDIMDaoImpl extends HibernateDaoSupport {
 
-	@Autowired()
+	@Autowired
+	@Qualifier(value="sessionFactorySqlServer")
 	private SessionFactory sessionFactorySqlServer;
 
 	public List<BdnaTechnopediaTag> getBDNATechnopediaTag() {
@@ -37,7 +39,7 @@ public class SQLServerDIMDaoImpl extends HibernateDaoSupport {
 
 		Session session = sessionFactorySqlServer.getCurrentSession();
 		SQLQuery sqlQuery = session.createSQLQuery(query);
-		BigDecimal result = (BigDecimal) sqlQuery.list().get(0);
+		Integer result = (Integer) sqlQuery.list().get(0);
 		return result.intValue();
 
 	}
