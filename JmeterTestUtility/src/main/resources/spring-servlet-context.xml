@@ -35,7 +35,6 @@
 	<import resource="sqlServer_databaseContext.xml" />
 
 
-	<bean id="dimService" class="com.bdna.automation.service.DIMService"></bean>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->

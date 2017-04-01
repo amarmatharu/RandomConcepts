@@ -2,17 +2,21 @@ package com.bdna.automation.service;
 
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
-import com.bdna.automation.dao.impl.OracleDIMDaoImpl;
+import com.bdna.automation.dao.impl.OracleDaoImpl;
 import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
 
 @Service
 public class DimViewService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(DimViewService.class.getName());
 	@Autowired
-	private OracleDIMDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDIMDaoImpl;
 
 	@Autowired
 	private SQLServerDIMDaoImpl sqlServerDIMDao;

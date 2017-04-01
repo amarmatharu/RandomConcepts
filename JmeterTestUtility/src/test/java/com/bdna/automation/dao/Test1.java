@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.bdna.automation.dao.impl.OracleDIMDaoImpl;
+import com.bdna.automation.dao.impl.OracleDaoImpl;
 
 @WebAppConfiguration
 @ContextConfiguration(locations = { "classpath:/spring-servlet-context.xml" })
@@ -16,7 +16,7 @@ public class Test1 {
 	
 	
 	@Autowired
-	private OracleDIMDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDIMDaoImpl;
 	
 	@Test
 	public void test()

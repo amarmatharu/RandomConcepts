@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
-import com.bdna.automation.dao.impl.OracleDIMDaoImpl;
+import com.bdna.automation.dao.impl.OracleDaoImpl;
 import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
 
 @Service
 public class FactTableService {
 	@Autowired
-	private OracleDIMDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDIMDaoImpl;
 
 	@Autowired
 	private SQLServerDIMDaoImpl sqlServerDIMDao;

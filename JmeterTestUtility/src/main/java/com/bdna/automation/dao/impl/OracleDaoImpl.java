@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bdna.automation.entity.BdnaTechnopediaTag;
 
 @Transactional
-public class OracleDIMDaoImpl extends HibernateDaoSupport {
+public class OracleDaoImpl extends HibernateDaoSupport {
 
 	@Autowired
 	@Qualifier(value="sessionFactoryOracle")
@@ -28,18 +28,18 @@ public class OracleDIMDaoImpl extends HibernateDaoSupport {
 		System.out.println("tested");
 	}
 
-	public List<BdnaTechnopediaTag> getBDNATechnopediaTag() {
-		List<BdnaTechnopediaTag> ls = new ArrayList<BdnaTechnopediaTag>();
-		try {
-
-			DetachedCriteria convReqCriteria = DetachedCriteria.forClass(BdnaTechnopediaTag.class);
-			ls = (List<BdnaTechnopediaTag>) getHibernateTemplate().findByCriteria(convReqCriteria);
-		} catch (Exception e) {
-			System.out.println("Exception" + e);
-		}
-		return ls;
-
-	}
+//	public List<BdnaTechnopediaTag> getBDNATechnopediaTag() {
+//		List<BdnaTechnopediaTag> ls = new ArrayList<BdnaTechnopediaTag>();
+//		try {
+//
+//			DetachedCriteria convReqCriteria = DetachedCriteria.forClass(BdnaTechnopediaTag.class);
+//			ls = (List<BdnaTechnopediaTag>) getHibernateTemplate().findByCriteria(convReqCriteria);
+//		} catch (Exception e) {
+//			System.out.println("Exception" + e);
+//		}
+//		return ls;
+//
+//	}
 
 	public int getCount(String query) {
 
