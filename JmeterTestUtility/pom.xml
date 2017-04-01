@@ -185,21 +185,219 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
-				</plugin> -->
+			 <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-configurations</id>
+						<phase>package</phase>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+						<configuration>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
+					<excludes>
+						<directory>src/main/resources</directory>
+						<exclude>AllergyReport/**</exclude>
+						<exclude>EHSReport/**</exclude>
+						<exclude>UTPReport/**</exclude>
+						<exclude>Scripts/**</exclude>
+						<exclude>Templates/**</exclude>
+						<exclude>velocity/**</exclude>
+						<exclude>flatfile/**</exclude>
+						<exclude>archive/**</exclude>
+						<exclude>spring/**</exclude>
+						<exclude>org/kp/oppr/resolute/**</exclude>
+						<exclude>**/*.properties</exclude>
+						<exclude>**/*.xml</exclude>
+						<!-- <exclude>**/*.vm</exclude> -->
+
+					</excludes>
 					<archive>
 						<manifest>
-							<mainClass>fully.qualified.MainClass</mainClass>
+							<mainClass>org.springframework.batch.core.launch.support.CommandLineJobRunner</mainClass>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
 						</manifest>
+						<manifestEntries>
+							<Class-Path>Config/
+								velocity/
+							</Class-Path>
+						</manifestEntries>
 					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
+					<outputDirectory>${project.build.directory}/dist/JMeterTestUtility</outputDirectory>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility/Config</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>**/*.properties</include>
+										<include>**/*.xml</include>
+										<include>**/*.bat</include>
+										<include>**/*.sh</include>
+										<include>**/*.vm</include>
+									</includes>
+									<excludes>
+										<exclude>Scripts/**</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-scripts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>**/*.sh</include>
+									</includes>
+									<excludes>
+										<exclude>**/*.properties</exclude>
+										<exclude>**/*.xml</exclude>
+										<exclude>**/*.bat</exclude>
+
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-template</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>**/*.vm</include>
+									</includes>
+									<excludes>
+										<exclude>**/*.properties</exclude>
+										<exclude>**/*.xml</exclude>
+										<exclude>**/*.bat</exclude>
+										<exclude>**/*.sh</exclude>
+
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-templates</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<includes>
+										<include>**/*.xls</include>
+									</includes>
+									<excludes>
+										<exclude>**/*.properties</exclude>
+										<exclude>**/*.sh</exclude>
+										<exclude>**/*.bat</exclude>
+
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/dist/JMeterTestUtility/bin</outputDirectory>
+							<resources>
+								<resource>
+									<directory>bin</directory>
+									<includes>
+										<include>**/*.*</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+				 
+				<plugin>
+				<groupId>org.apache.maven.plugins </groupId>
+				<artifactId>maven-assembly-plugin </artifactId>
+				
+				<configuration>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+					<finalName>JmeterTestUtility</finalName>
+					<appendAssemblyId>false </appendAssemblyId>
+
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 		</plugins>
 	</build>
 
