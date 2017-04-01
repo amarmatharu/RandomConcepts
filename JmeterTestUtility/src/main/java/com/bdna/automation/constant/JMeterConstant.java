@@ -13,8 +13,8 @@ public class JMeterConstant {
 	private static Map<String, String> bp_agg_vw_map = new HashMap<String, String>();
 	private static Map<String, String> bp_fact_vw_map = new HashMap<String, String>();
 	private static Map<String, Map<String, String>> hm_service_map = new HashMap<String, Map<String, String>>();
-	
-	static{
+
+	static {
 		hm_service_map.put("DimTableService", bp_dim_tab_map);
 		hm_service_map.put("AggTableService", bp_agg_tab_map);
 		hm_service_map.put("FactTableService", bp_fact_tab_map);
@@ -22,8 +22,8 @@ public class JMeterConstant {
 		hm_service_map.put("FactViewService", bp_fact_vw_map);
 		hm_service_map.put("AggViewService", bp_agg_vw_map);
 	}
-	
-	static{
+
+	static {
 		bp_dim_tab_map.put("DIM_N_ALL_CONNECT_AS_TAB", "select count(*) from DIM_N_ALL_CONNECT_AS$");
 		bp_dim_tab_map.put("DIM_N_ALL_CPU_AS_TAB", "select count(*) from DIM_N_ALL_CPU_AS$");
 		bp_dim_tab_map.put("DIM_N_ALL_ENT_TAB", "select count(*) from DIM_N_ALL_ENT$");
@@ -253,7 +253,7 @@ public class JMeterConstant {
 
 	}
 
-	static{
+	static {
 		bp_dim_vw_map.put("DIM_N_ALL_CONNECT_AS_VW", "select count(*) from DIM_N_ALL_CONNECT_AS");
 		bp_dim_vw_map.put("DIM_N_ALL_CPU_AS_VW", "select count(*) from DIM_N_ALL_CPU_AS");
 		bp_dim_vw_map.put("DIM_N_ALL_ENT_VW", "select count(*) from DIM_N_ALL_ENT");
@@ -523,175 +523,94 @@ public class JMeterConstant {
 		bp_dim_vw_map.put("DIM_T_TPC_UUID_SW_VW", "select count(*) from DIM_T_TPC_UUID_SW");
 		bp_dim_vw_map.put("DIM_T_WIN_ORDER_VW", "select count(*) from DIM_T_WIN_ORDER");
 	}
-	
-	static
-	{
-		bp_fact_tab_map.put("FACT_N_ALL_TAB","select count(*) from FACT_N_ALL$");
-		bp_fact_tab_map.put("FACT_N_ALL_TAB","select count(*) from FACT_N_ALL_ASSETS$");
-		bp_fact_tab_map.put("FACT_N_ALL_PROC_TAB","select count(*) from FACT_N_ALL_PROC$");
-		bp_fact_tab_map.put("FACT_N_IT_TAB","select count(*) from FACT_N_IT$");
-		bp_fact_tab_map.put("FACT_N_IT_ASSETS_TAB","select count(*) from FACT_N_IT_ASSETS$");
-		bp_fact_tab_map.put("FACT_N_IT_PROC_TAB","select count(*) from FACT_N_IT_PROC$");
-		bp_fact_tab_map.put("FACT_N_IT_SEC_SUMM_TAB","select count(*) from FACT_N_IT_SEC_SUMM$");
-		bp_fact_tab_map.put("FACT_N_MD_TAB","select count(*) from FACT_N_MD$");
-		bp_fact_tab_map.put("FACT_N_MD_ASSETS_TAB","select count(*) from FACT_N_MD_ASSETS$");
-		bp_fact_tab_map.put("FACT_N_MD_PROC_TAB","select count(*) from FACT_N_MD_PROC$");
-		bp_fact_tab_map.put("FACT_T_CPU_TAB","select count(*) from FACT_T_CPU$");
-		bp_fact_tab_map.put("FACT_T_HW_TAB","select count(*) from FACT_T_HW$");
-		bp_fact_tab_map.put("FACT_T_HW_PROC_TAB","select count(*) from FACT_T_HW_PROC$");
-		bp_fact_tab_map.put("FACT_T_HW_SEC_TAB","select count(*) from FACT_T_HW_SEC$");
-		bp_fact_tab_map.put("FACT_T_MANUFACTURER_TAB","select count(*) from FACT_T_MANUFACTURER$");
-		bp_fact_tab_map.put("FACT_T_MD_TAB","select count(*) from FACT_T_MD$");
-		bp_fact_tab_map.put("FACT_T_SW_TAB","select count(*) from FACT_T_SW$");
-		bp_fact_tab_map.put("FACT_T_SW_PROC_TAB","select count(*) from FACT_T_SW_PROC$");
-		bp_fact_tab_map.put("FACT_T_SW_SEC_TAB","select count(*) from FACT_T_SW_SEC$");
-		
-	}
-	
-	static
-	{
-		bp_agg_tab_map.put("AGG_N_IT_ASSETS_HW_TAB","select count(*) from AGG_N_IT_ASSETS_HW");
-		bp_agg_tab_map.put("AGG_N_IT_HW_TAB","select count(*) from AGG_N_IT_HW");
-		bp_agg_tab_map.put("AGG_N_IT_PO_HW_TAB","select count(*) from AGG_N_IT_PO_HW");
-		bp_agg_tab_map.put("AGG_N_IT_PO_INV_TAB","select count(*) from AGG_N_IT_PO_INV");
-		bp_agg_tab_map.put("AGG_N_IT_PO_SW_TAB","select count(*) from AGG_N_IT_PO_SW");
-		bp_agg_tab_map.put("AGG_N_IT_SEC_INV_TAB","select count(*) from AGG_N_IT_SEC_INV");
-		bp_agg_tab_map.put("AGG_N_IT_SW_TAB","select count(*) from AGG_N_IT_SW");
-		bp_agg_tab_map.put("AGG_T_CPU_TAB","select count(*) from AGG_T_CPU");
-		bp_agg_tab_map.put("AGG_T_HW_TAB","select count(*) from AGG_T_HW");
-		bp_agg_tab_map.put("AGG_T_HW_PROC_TAB","select count(*) from AGG_T_HW_PROC");
-		bp_agg_tab_map.put("AGG_T_HW_SEC_TAB","select count(*) from AGG_T_HW_SEC");
-		bp_agg_tab_map.put("AGG_T_MANUFACTURER_TAB","select count(*) from AGG_T_MANUFACTURER");
-		bp_agg_tab_map.put("AGG_T_SW_TAB","select count(*) from AGG_T_SW");
-		bp_agg_tab_map.put("AGG_T_SW_PROC_TAB","select count(*) from AGG_T_SW_PROC");
-		bp_agg_tab_map.put("AGG_T_SW_SEC_TAB","select count(*) from AGG_T_SW_SEC");
-		bp_agg_tab_map.put("AGG_T_SW_VIRTUAL_COMP_TAB","select count(*) from AGG_T_SW_VIRTUAL_COMP");
-		bp_agg_tab_map.put("AGG_T_SW_WIN_READINESS_TAB","select count(*) from AGG_T_SW_WIN_READINESS");
-		bp_agg_tab_map.put("AGG_N_IT_ASSETS_INV_TAB","select count(*) from AGG_N_IT_ASSETS_INV");
-		bp_agg_tab_map.put("AGG_N_IT_ASSETS_SW_TAB","select count(*) from AGG_N_IT_ASSETS_SW");
-		bp_agg_tab_map.put("AGG_N_IT_INV_TAB","select count(*) from AGG_N_IT_INV");
-		bp_agg_tab_map.put("AGG_N_IT_SEC_HW_TAB","select count(*) from AGG_N_IT_SEC_HW");
-		bp_agg_tab_map.put("AGG_N_IT_SEC_OS_TAB","select count(*) from AGG_N_IT_SEC_OS");
-		bp_agg_tab_map.put("AGG_N_IT_SEC_SW_TAB","select count(*) from AGG_N_IT_SEC_SW");	
-
-	}
-	
-	static
-	{
-		bp_fact_vw_map.put("FACT_N_ALL_VW","select count(*) from FACT_N_ALL");
-		bp_fact_vw_map.put("FACT_N_ALL_ASSETS_VW","select count(*) from FACT_N_ALL_ASSETS");
-		bp_fact_vw_map.put("FACT_N_ALL_PROC_VW","select count(*) from FACT_N_ALL_PROC");
-		bp_fact_vw_map.put("FACT_N_IT_VW","select count(*) from FACT_N_IT");
-		bp_fact_vw_map.put("FACT_N_IT_ASSETS_VW","select count(*) from FACT_N_IT_ASSETS");
-		bp_fact_vw_map.put("FACT_N_IT_PROC_VW","select count(*) from FACT_N_IT_PROC");
-		bp_fact_vw_map.put("FACT_N_IT_SEC_VW","select count(*) from FACT_N_IT_SEC");
-		bp_fact_vw_map.put("FACT_N_IT_SEC_SUMM_VW","select count(*) from FACT_N_IT_SEC_SUMM");
-		bp_fact_vw_map.put("FACT_N_MAPPING_VW","select count(*) from FACT_N_MAPPING");
-		bp_fact_vw_map.put("FACT_N_MD_VW","select count(*) from FACT_N_MD");
-		bp_fact_vw_map.put("FACT_N_MD_ASSETS_VW","select count(*) from FACT_N_MD_ASSETS");
-		bp_fact_vw_map.put("FACT_N_MD_PROC_VW","select count(*) from FACT_N_MD_PROC");
-		bp_fact_vw_map.put("FACT_T_CPU_VW","select count(*) from FACT_T_CPU");
-		bp_fact_vw_map.put("FACT_T_HW_VW","select count(*) from FACT_T_HW");
-		bp_fact_vw_map.put("FACT_T_HW_PROC_VW","select count(*) from FACT_T_HW_PROC");
-		bp_fact_vw_map.put("FACT_T_HW_SEC_VW","select count(*) from FACT_T_HW_SEC");
-		bp_fact_vw_map.put("FACT_T_MANUFACTURER_VW","select count(*) from FACT_T_MANUFACTURER");
-		bp_fact_vw_map.put("FACT_T_MD_VW","select count(*) from FACT_T_MD");
-		bp_fact_vw_map.put("FACT_T_OS_SYSTEM_REQUIREMENTS_VW","select count(*) from FACT_T_OS_SYSTEM_REQUIREMENTS");
-		bp_fact_vw_map.put("FACT_T_SW_VW","select count(*) from FACT_T_SW");
-		bp_fact_vw_map.put("FACT_T_SW_PROC_VW","select count(*) from FACT_T_SW_PROC");
-		bp_fact_vw_map.put("FACT_T_SW_SEC_VW","select count(*) from FACT_T_SW_SEC");
-		bp_fact_vw_map.put("FACT_T_SW_VIRTUAL_COMP_VW","select count(*) from FACT_T_SW_VIRTUAL_COMP");
-		bp_fact_vw_map.put("FACT_T_SW_WIN_READINESS_VW","select count(*) from FACT_T_SW_WIN_READINESS");
-	}
-
-	
 
 	static {
-		queryString.put("DIM_N_CPU", "select count(*) from DIM_N_CPU$");
-		queryString.put("DIM_N_CPU_LICENSING", "select count(*) from DIM_N_CPU_LICENSING$");
-		queryString.put("DIM_N_DEGEN", "select count(*) from DIM_N_DEGEN$");
-		queryString.put("DIM_N_ENT", "select count(*) from DIM_N_ENT$");
-		queryString.put("DIM_N_ENT_DATES", "select count(*) from DIM_N_ENT_DATES$");
-		queryString.put("DIM_N_HW", "select count(*) from DIM_N_HW$");
-		queryString.put("DIM_N_HW_CPE", "select count(*) from DIM_N_HW_CPE$");
-		queryString.put("DIM_N_HW_CVE", "select count(*) from DIM_N_HW_CVE$");
-		queryString.put("DIM_N_HW_IT", "select count(*) from DIM_N_HW_IT$");
-		queryString.put("DIM_N_HW_LIC_ADDITIONAL_HW", "select count(*) from DIM_N_HW_LIC_ADDITIONAL_HW$");
-		queryString.put("DIM_N_HW_LIC_ADDITIONAL_SW", "select count(*) from DIM_N_HW_LIC_ADDITIONAL_SW$");
-		queryString.put("DIM_N_HW_LIC_CPU_CHARS", "select count(*) from DIM_N_HW_LIC_CPU_CHARS$");
-		queryString.put("DIM_N_HW_LIC_MFRPARTNO_LPRICE", "select count(*) from DIM_N_HW_LIC_MFRPARTNO_LPRICE$");
-		queryString.put("DIM_N_HW_LIC_MODEL$", "select count(*) from DIM_N_HW_LIC_MODEL$");
-		queryString.put("DIM_N_HW_PO$", "select count(*) from DIM_N_HW_PO$");
-		queryString.put("DIM_N_HW_POWER$", "select count(*) from DIM_N_HW_POWER$");
-		queryString.put("DIM_N_HW_PRICING$", "select count(*) from DIM_N_HW_PRICING$");
-		queryString.put("DIM_N_HW_PRODUCT_TAG_MAP$", "select count(*) from DIM_N_HW_PRODUCT_TAG_MAP$");
-		queryString.put("DIM_N_INV_TASK$", "select count(*) from DIM_N_INV_TASK$");
-		queryString.put("DIM_N_MUPT_USR_DU", "select count(*) from DIM_N_MUPT_USR_DU");
-		queryString.put("DIM_N_OPENSRC_SW$", "select count(*) from DIM_N_OPENSRC_SW$");
-		queryString.put("DIM_N_OS$", "select count(*) from DIM_N_OS$");
-		queryString.put("DIM_N_OS_CPE$", "select count(*) from DIM_N_OS_CPE$");
-		queryString.put("DIM_N_OS_CVE$", "select count(*) from DIM_N_OS_CVE$");
-		queryString.put("DIM_N_OS_SYS_REQS_WIN_ORDER$", "select count(*) from DIM_N_OS_SYS_REQS_WIN_ORDER$");
-		queryString.put("DIM_N_OS_SYSTEM_REQUIREMENTS$", "select count(*) from DIM_N_OS_SYSTEM_REQUIREMENTS$");
-		queryString.put("DIM_N_OS_WIN_ORDER$", "select count(*) from DIM_N_OS_WIN_ORDER$");
-		queryString.put("DIM_N_PO$", "select count(*) from DIM_N_PO$");
-		queryString.put("DIM_N_SW$", "select count(*) from DIM_N_SW$");
-		queryString.put("DIM_N_SW_CPE$", "select count(*) from DIM_N_SW_CPE$");
-		queryString.put("DIM_N_SW_CVE$", "select count(*) from DIM_N_SW_CVE$");
-		queryString.put("DIM_N_SW_INSTANCE$", "select count(*) from DIM_N_SW_INSTANCE$");
-		queryString.put("DIM_N_SW_IT$", "select count(*) from DIM_N_SW_IT$");
-		queryString.put("DIM_N_SW_LIC_ADDITIONAL_SW$", "select count(*) from DIM_N_SW_LIC_ADDITIONAL_SW$");
-		queryString.put("DIM_N_SW_LIC_DIST_MEDIA$", "select count(*) from DIM_N_SW_LIC_DIST_MEDIA$");
-		queryString.put("DIM_N_SW_LIC_ENVIRONMENT$", "select count(*) from DIM_N_SW_LIC_ENVIRONMENT$");
-		queryString.put("DIM_N_SW_LIC_LANGUAGE$", "select count(*) from DIM_N_SW_LIC_LANGUAGE$");
-		queryString.put("DIM_N_SW_LIC_MAINT_GRADE$", "select count(*) from DIM_N_SW_LIC_MAINT_GRADE$");
-		queryString.put("DIM_N_SW_LIC_METRIC$", "select count(*) from DIM_N_SW_LIC_METRIC$");
-		queryString.put("DIM_N_SW_LIC_MFRPARTNO_LPRICE$", "select count(*) from DIM_N_SW_LIC_MFRPARTNO_LPRICE$");
-		queryString.put("DIM_N_SW_LIC_PRICE_LEVEL$", "select count(*) from DIM_N_SW_LIC_PRICE_LEVEL$");
-		queryString.put("DIM_N_SW_LIC_PRICING$", "select count(*) from DIM_N_SW_LIC_PRICING$");
-		queryString.put("DIM_N_SW_LIC_PROGRAM$", "select count(*) from DIM_N_SW_LIC_PROGRAM$");
-		queryString.put("DIM_N_SW_LIC_RELEASE$", "select count(*) from DIM_N_SW_LIC_RELEASE$");
-		queryString.put("DIM_N_SW_LIC_TYPE$", "select count(*) from DIM_N_SW_LIC_TYPE$");
-		queryString.put("DIM_N_SW_LIC_UPGRADE_FROM$", "select count(*) from DIM_N_SW_LIC_UPGRADE_FROM$");
-		queryString.put("DIM_N_SW_PO$", "select count(*) from DIM_N_SW_PO$");
-		queryString.put("DIM_N_SW_PRICING$", "select count(*) from DIM_N_SW_PRICING$");
-		queryString.put("DIM_N_SW_PRODUCT_LINK$", "select count(*) from DIM_N_SW_PRODUCT_LINK$");
-		queryString.put("DIM_N_SW_PRODUCT_LINK_IT$", "select count(*) from DIM_N_SW_PRODUCT_LINK_IT$");
-		queryString.put("DIM_N_SW_PRODUCT_LINK_PO$", "select count(*) from DIM_N_SW_PRODUCT_LINK_PO$");
-		queryString.put("DIM_N_SW_PRODUCT_TAG_MAP$", "select count(*) from DIM_N_SW_PRODUCT_TAG_MAP$");
-		queryString.put("DIM_N_SW_REL_PLATFORM$", "select count(*) from DIM_N_SW_REL_PLATFORM$");
-		queryString.put("DIM_N_SW_RELEASE_LINK$", "select count(*) from DIM_N_SW_RELEASE_LINK$");
-		queryString.put("DIM_N_SW_SUITE$", "select count(*) from DIM_N_SW_SUITE$");
-		queryString.put("DIM_N_SW_SUITE_IT$", "select count(*) from DIM_N_SW_SUITE_IT$");
-		queryString.put("DIM_N_SW_SUITE_PO$", "select count(*) from DIM_N_SW_SUITE_PO$");
-		queryString.put("DIM_N_SW_SUPPORT_POLICY$", "select count(*) from DIM_N_SW_SUPPORT_POLICY$");
-		queryString.put("DIM_N_SW_VIRTUAL_COMP$", "select count(*) from DIM_N_SW_VIRTUAL_COMP$");
-		queryString.put("DIM_N_SW_WIN_READINESS$", "select count(*) from DIM_N_SW_WIN_READINESS$");
-		queryString.put("DIM_N_SYSTEM$", "select count(*) from DIM_N_SYSTEM$");
-		queryString.put("DIM_N_SYSTEM_USER$", "select count(*) from DIM_N_SYSTEM_USER$");
-		queryString.put("DIM_N_TPC_MAPPING$", "select count(*) from DIM_N_TPC_MAPPING$");
-		queryString.put("DIM_N_TPC_UUID_ALL$", "select count(*) from DIM_N_TPC_UUID_ALL$");
-		queryString.put("DIM_N_TPC_UUID_ALL_ASSETS$", "select count(*) from DIM_N_TPC_UUID_ALL_ASSETS$");
-		queryString.put("DIM_N_TPC_UUID_ALL_PROC$", "select count(*) from DIM_N_TPC_UUID_ALL_PROC$");
-		queryString.put("DIM_N_TPC_UUID_IT$", "select count(*) from DIM_N_TPC_UUID_IT$");
-		queryString.put("DIM_N_TPC_UUID_IT_ASSETS$", "select count(*) from DIM_N_TPC_UUID_IT_ASSETS$");
-		queryString.put("DIM_N_TPC_UUID_IT_PROC$", "select count(*) from DIM_N_TPC_UUID_IT_PROC$");
-		queryString.put("DIM_N_TPC_UUID_IT_SEC_SUMM$", "select count(*) from DIM_N_TPC_UUID_IT_SEC_SUMM$");
-		queryString.put("DIM_N_TPC_UUID_MD$", "select count(*) from DIM_N_TPC_UUID_MD$");
-		queryString.put("DIM_N_TPC_UUID_MD_ASSETS$", "select count(*) from DIM_N_TPC_UUID_MD_ASSETS$");
-		queryString.put("DIM_N_TPC_UUID_MD_PROC$", "select count(*) from DIM_N_TPC_UUID_MD_PROC$");
+		bp_fact_tab_map.put("FACT_N_ALL_TAB", "select count(*) from FACT_N_ALL$");
+		bp_fact_tab_map.put("FACT_N_ALL_TAB", "select count(*) from FACT_N_ALL_ASSETS$");
+		bp_fact_tab_map.put("FACT_N_ALL_PROC_TAB", "select count(*) from FACT_N_ALL_PROC$");
+		bp_fact_tab_map.put("FACT_N_IT_TAB", "select count(*) from FACT_N_IT$");
+		bp_fact_tab_map.put("FACT_N_IT_ASSETS_TAB", "select count(*) from FACT_N_IT_ASSETS$");
+		bp_fact_tab_map.put("FACT_N_IT_PROC_TAB", "select count(*) from FACT_N_IT_PROC$");
+		bp_fact_tab_map.put("FACT_N_IT_SEC_SUMM_TAB", "select count(*) from FACT_N_IT_SEC_SUMM$");
+		bp_fact_tab_map.put("FACT_N_MD_TAB", "select count(*) from FACT_N_MD$");
+		bp_fact_tab_map.put("FACT_N_MD_ASSETS_TAB", "select count(*) from FACT_N_MD_ASSETS$");
+		bp_fact_tab_map.put("FACT_N_MD_PROC_TAB", "select count(*) from FACT_N_MD_PROC$");
+		bp_fact_tab_map.put("FACT_T_CPU_TAB", "select count(*) from FACT_T_CPU$");
+		bp_fact_tab_map.put("FACT_T_HW_TAB", "select count(*) from FACT_T_HW$");
+		bp_fact_tab_map.put("FACT_T_HW_PROC_TAB", "select count(*) from FACT_T_HW_PROC$");
+		bp_fact_tab_map.put("FACT_T_HW_SEC_TAB", "select count(*) from FACT_T_HW_SEC$");
+		bp_fact_tab_map.put("FACT_T_MANUFACTURER_TAB", "select count(*) from FACT_T_MANUFACTURER$");
+		bp_fact_tab_map.put("FACT_T_MD_TAB", "select count(*) from FACT_T_MD$");
+		bp_fact_tab_map.put("FACT_T_SW_TAB", "select count(*) from FACT_T_SW$");
+		bp_fact_tab_map.put("FACT_T_SW_PROC_TAB", "select count(*) from FACT_T_SW_PROC$");
+		bp_fact_tab_map.put("FACT_T_SW_SEC_TAB", "select count(*) from FACT_T_SW_SEC$");
+
+	}
+
+	static {
+		bp_agg_tab_map.put("AGG_N_IT_ASSETS_HW_TAB", "select count(*) from AGG_N_IT_ASSETS_HW");
+		bp_agg_tab_map.put("AGG_N_IT_HW_TAB", "select count(*) from AGG_N_IT_HW");
+		bp_agg_tab_map.put("AGG_N_IT_PO_HW_TAB", "select count(*) from AGG_N_IT_PO_HW");
+		bp_agg_tab_map.put("AGG_N_IT_PO_INV_TAB", "select count(*) from AGG_N_IT_PO_INV");
+		bp_agg_tab_map.put("AGG_N_IT_PO_SW_TAB", "select count(*) from AGG_N_IT_PO_SW");
+		bp_agg_tab_map.put("AGG_N_IT_SEC_INV_TAB", "select count(*) from AGG_N_IT_SEC_INV");
+		bp_agg_tab_map.put("AGG_N_IT_SW_TAB", "select count(*) from AGG_N_IT_SW");
+		bp_agg_tab_map.put("AGG_T_CPU_TAB", "select count(*) from AGG_T_CPU");
+		bp_agg_tab_map.put("AGG_T_HW_TAB", "select count(*) from AGG_T_HW");
+		bp_agg_tab_map.put("AGG_T_HW_PROC_TAB", "select count(*) from AGG_T_HW_PROC");
+		bp_agg_tab_map.put("AGG_T_HW_SEC_TAB", "select count(*) from AGG_T_HW_SEC");
+		bp_agg_tab_map.put("AGG_T_MANUFACTURER_TAB", "select count(*) from AGG_T_MANUFACTURER");
+		bp_agg_tab_map.put("AGG_T_SW_TAB", "select count(*) from AGG_T_SW");
+		bp_agg_tab_map.put("AGG_T_SW_PROC_TAB", "select count(*) from AGG_T_SW_PROC");
+		bp_agg_tab_map.put("AGG_T_SW_SEC_TAB", "select count(*) from AGG_T_SW_SEC");
+		bp_agg_tab_map.put("AGG_T_SW_VIRTUAL_COMP_TAB", "select count(*) from AGG_T_SW_VIRTUAL_COMP");
+		bp_agg_tab_map.put("AGG_T_SW_WIN_READINESS_TAB", "select count(*) from AGG_T_SW_WIN_READINESS");
+		bp_agg_tab_map.put("AGG_N_IT_ASSETS_INV_TAB", "select count(*) from AGG_N_IT_ASSETS_INV");
+		bp_agg_tab_map.put("AGG_N_IT_ASSETS_SW_TAB", "select count(*) from AGG_N_IT_ASSETS_SW");
+		bp_agg_tab_map.put("AGG_N_IT_INV_TAB", "select count(*) from AGG_N_IT_INV");
+		bp_agg_tab_map.put("AGG_N_IT_SEC_HW_TAB", "select count(*) from AGG_N_IT_SEC_HW");
+		bp_agg_tab_map.put("AGG_N_IT_SEC_OS_TAB", "select count(*) from AGG_N_IT_SEC_OS");
+		bp_agg_tab_map.put("AGG_N_IT_SEC_SW_TAB", "select count(*) from AGG_N_IT_SEC_SW");
+
+	}
+
+	static {
+		bp_fact_vw_map.put("FACT_N_ALL_VW", "select count(*) from FACT_N_ALL");
+		bp_fact_vw_map.put("FACT_N_ALL_ASSETS_VW", "select count(*) from FACT_N_ALL_ASSETS");
+		bp_fact_vw_map.put("FACT_N_ALL_PROC_VW", "select count(*) from FACT_N_ALL_PROC");
+		bp_fact_vw_map.put("FACT_N_IT_VW", "select count(*) from FACT_N_IT");
+		bp_fact_vw_map.put("FACT_N_IT_ASSETS_VW", "select count(*) from FACT_N_IT_ASSETS");
+		bp_fact_vw_map.put("FACT_N_IT_PROC_VW", "select count(*) from FACT_N_IT_PROC");
+		bp_fact_vw_map.put("FACT_N_IT_SEC_VW", "select count(*) from FACT_N_IT_SEC");
+		bp_fact_vw_map.put("FACT_N_IT_SEC_SUMM_VW", "select count(*) from FACT_N_IT_SEC_SUMM");
+		bp_fact_vw_map.put("FACT_N_MAPPING_VW", "select count(*) from FACT_N_MAPPING");
+		bp_fact_vw_map.put("FACT_N_MD_VW", "select count(*) from FACT_N_MD");
+		bp_fact_vw_map.put("FACT_N_MD_ASSETS_VW", "select count(*) from FACT_N_MD_ASSETS");
+		bp_fact_vw_map.put("FACT_N_MD_PROC_VW", "select count(*) from FACT_N_MD_PROC");
+		bp_fact_vw_map.put("FACT_T_CPU_VW", "select count(*) from FACT_T_CPU");
+		bp_fact_vw_map.put("FACT_T_HW_VW", "select count(*) from FACT_T_HW");
+		bp_fact_vw_map.put("FACT_T_HW_PROC_VW", "select count(*) from FACT_T_HW_PROC");
+		bp_fact_vw_map.put("FACT_T_HW_SEC_VW", "select count(*) from FACT_T_HW_SEC");
+		bp_fact_vw_map.put("FACT_T_MANUFACTURER_VW", "select count(*) from FACT_T_MANUFACTURER");
+		bp_fact_vw_map.put("FACT_T_MD_VW", "select count(*) from FACT_T_MD");
+		bp_fact_vw_map.put("FACT_T_OS_SYSTEM_REQUIREMENTS_VW", "select count(*) from FACT_T_OS_SYSTEM_REQUIREMENTS");
+		bp_fact_vw_map.put("FACT_T_SW_VW", "select count(*) from FACT_T_SW");
+		bp_fact_vw_map.put("FACT_T_SW_PROC_VW", "select count(*) from FACT_T_SW_PROC");
+		bp_fact_vw_map.put("FACT_T_SW_SEC_VW", "select count(*) from FACT_T_SW_SEC");
+		bp_fact_vw_map.put("FACT_T_SW_VIRTUAL_COMP_VW", "select count(*) from FACT_T_SW_VIRTUAL_COMP");
+		bp_fact_vw_map.put("FACT_T_SW_WIN_READINESS_VW", "select count(*) from FACT_T_SW_WIN_READINESS");
 	}
 
 	public static final String PROPERTIES_FILENAME = "jmeter.properties";
-	
+
 	public static String getValue(String key) {
 
 		return queryString.get(key);
 	}
-	
+
 	public static String getQueryString(String name, String key) {
 
-			return hm_service_map.get(name).get(key);
+		return hm_service_map.get(name).get(key);
 	}
 
 }

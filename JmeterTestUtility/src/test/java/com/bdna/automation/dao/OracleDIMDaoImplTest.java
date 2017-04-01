@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.bdna.automation.dao.impl.OracleDIMDaoImpl;
+import com.bdna.automation.dao.impl.OracleDaoImpl;
 import com.bdna.automation.entity.BdnaTechnopediaTag;
 
 @WebAppConfiguration
@@ -19,7 +19,7 @@ import com.bdna.automation.entity.BdnaTechnopediaTag;
 public class OracleDIMDaoImplTest {
 
 	@Autowired
-	private OracleDIMDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDIMDaoImpl;
 
 	@Test
 	public void test() {
