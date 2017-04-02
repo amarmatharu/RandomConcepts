@@ -2,18 +2,22 @@ package com.bdna.automation.service;
 
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
+import com.bdna.automation.dao.impl.SQLServerDaoImpl;
 
 public class AggTableService {
+	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
+	
 	@Autowired
 	private OracleDaoImpl oracleDIMDaoImpl;
 
 	@Autowired
-	private SQLServerDIMDaoImpl sqlServerDIMDao;
+	private SQLServerDaoImpl sqlServerDIMDao;
 	
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
@@ -21,12 +25,11 @@ public class AggTableService {
 		String query = JMeterConstant.getQueryString(AggTableService.class.getSimpleName(), key);
 		sqlCount = sqlServerDIMDao.getCount(query);
 		oracleCount = oracleDIMDaoImpl.getCount(query);
-		System.out.println("--------------------------");
-		System.out.println("Count for: " + key);
-		System.out.println("--------------------------");
-		System.out.println("SQL Server: " + sqlCount);
-		System.out.println("Oracle: " + oracleCount);
-		System.out.println("--------------------------");
+		LOGGER.info("--------------------------");
+		LOGGER.info("Key: " + key);
+		LOGGER.info("Query: " + query);
+		LOGGER.info("Count --> SQL Server: " + sqlCount + " " + "Oracle: " + oracleCount);
+		LOGGER.info("--------------------------");
 		if (sqlCount == oracleCount)
 			return true;
 		else

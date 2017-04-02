@@ -10,6 +10,11 @@ import org.apache.jmeter.samplers.SampleResult;
 
 public abstract class BaseTestCase extends AbstractJavaSamplerClient implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BaseTestCase() {
 		System.out.println(whoAmI() + "\tConstruct");
 	}
@@ -37,7 +42,7 @@ public abstract class BaseTestCase extends AbstractJavaSamplerClient implements 
 	 *            the context which contains the initialization parameters.
 	 */
 	public void listParameters(JavaSamplerContext context) {
-		Iterator argsIt = context.getParameterNamesIterator();
+		Iterator<String> argsIt = context.getParameterNamesIterator();
 		while (argsIt.hasNext()) {
 			String name = (String) argsIt.next();
 			System.out.println(name + "=" + context.getParameter(name));

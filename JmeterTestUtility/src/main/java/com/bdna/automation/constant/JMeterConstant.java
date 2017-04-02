@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class JMeterConstant {
 
-	private static Map<String, String> queryString = new HashMap<String, String>();
 	private static Map<String, String> bp_dim_tab_map = new HashMap<String, String>();
 	private static Map<String, String> bp_fact_tab_map = new HashMap<String, String>();
 	private static Map<String, String> bp_agg_tab_map = new HashMap<String, String>();
@@ -602,11 +601,6 @@ public class JMeterConstant {
 	}
 
 	public static final String PROPERTIES_FILENAME = "jmeter.properties";
-
-	public static String getValue(String key) {
-
-		return queryString.get(key);
-	}
 
 	public static String getQueryString(String name, String key) {
 
