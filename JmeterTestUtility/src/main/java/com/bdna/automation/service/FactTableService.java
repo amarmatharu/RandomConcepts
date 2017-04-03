@@ -16,18 +16,18 @@ public class FactTableService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
 	@Autowired
-	private OracleDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDIMDao;
+	private SQLServerDaoImpl sqlServerDaoImpl;
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
 
 		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
 		System.out.println("query: " + query);
-		sqlCount = sqlServerDIMDao.getCount(query);
-		oracleCount = oracleDIMDaoImpl.getCount(query);
+		sqlCount = sqlServerDaoImpl.getCount(query);
+		oracleCount = oracleDaoImpl.getCount(query);
 		LOGGER.info("--------------------------");
 		LOGGER.info("Key: " + key);
 		LOGGER.info("Query: " + query);

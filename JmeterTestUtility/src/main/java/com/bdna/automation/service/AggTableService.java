@@ -14,17 +14,17 @@ public class AggTableService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 	
 	@Autowired
-	private OracleDaoImpl oracleDIMDaoImpl;
+	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDIMDao;
+	private SQLServerDaoImpl sqlServerDaoImpl;
 	
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
 
 		String query = JMeterConstant.getQueryString(AggTableService.class.getSimpleName(), key);
-		sqlCount = sqlServerDIMDao.getCount(query);
-		oracleCount = oracleDIMDaoImpl.getCount(query);
+		sqlCount = sqlServerDaoImpl.getCount(query);
+		oracleCount = oracleDaoImpl.getCount(query);
 		LOGGER.info("--------------------------");
 		LOGGER.info("Key: " + key);
 		LOGGER.info("Query: " + query);

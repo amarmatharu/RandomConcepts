@@ -21,12 +21,12 @@ public class DimTableService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDIMDao;
+	private SQLServerDaoImpl sqlServerDaoImpl;
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
 		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
-		sqlCount = sqlServerDIMDao.getCount(query);
+		sqlCount = sqlServerDaoImpl.getCount(query);
 		oracleCount = oracleDaoImpl.getCount(query);
 		LOGGER.info("--------------------------");
 		LOGGER.info("Key: " + key);
