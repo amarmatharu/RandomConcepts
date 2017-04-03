@@ -2,39 +2,37 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 public class PropertyUtil {
 
-	private static Properties props = new Properties();
-	private static boolean isPropInitialized = false;
-	// private static final Logger logger =
-	// Logger.getLogger(PropertyUtil.class);
-	private static final String filename = "FileName.properties";
-
-	private void initPropFile() {
-
-		if (!isPropInitialized) {
-
-			// if (logger.isDebugEnabled()) logger.debug("Reading " + filename +
-			// " file");
-
-			InputStream propertyStream = getClass().getClassLoader().getResourceAsStream(filename);
+	private static Properties props;
+	private static InputStream propertyStream;
+	private static final String dimTableFilename = "DimTableNames.properties";
+	private static final String dimViewFilename = "DimViewNames.properties";
+	private static final String factTableFilename = "FactTableNames.properties";
+	private static final String factViewFilename = "FactViewNames.properties";
+	private static final String aggTableFilename = "AggTableNames.properties";
+    private static Map<String, String> file_map = new HashMap<>();
+    
+    static{
+    	file_map.put("dimtable", dimTableFilename);
+    	file_map.put("dimview", dimViewFilename);
+    	file_map.put("facttable", factTableFilename);
+    	file_map.put("factview", factViewFilename);
+    	file_map.put("aggtable", aggTableFilename);
+    }
+	private void initPropFile(String filename) {
+            props = new Properties();
+			propertyStream = getClass().getClassLoader().getResourceAsStream(filename);
 
 			try {
-				// logger.debug("prop: " + propertyStream + " props: " + props);
-
 				props.load(propertyStream);
-
-				isPropInitialized = true;
-
 			} catch (Exception e) {
-
-				// logger.error("An error occurred while attempting to read the
-				// property file: " + filename + e.getMessage(),e);
-				throw new RuntimeException("An error occurred while attempting to read the property file: " + filename,
+				throw new RuntimeException("An error occurred while attempting to load the property file: " + filename,
 						e);
 
 			} finally {
@@ -42,41 +40,23 @@ public class PropertyUtil {
 					if (propertyStream != null)
 						propertyStream.close();
 				} catch (IOException e) {
-					// logger.error("An error occurred while attempting to close
-					// the property file: " + filename + e.getMessage(),e);
 					throw new RuntimeException(
 							"An error occurred while attempting to close the property file: " + filename, e);
 				}
 			}
+			
 		}
-	}
+	
+	
 
-	public String getValue(String key) {
-
-		initPropFile();
-		String value = props.getProperty(key);
-		// if (logger.isDebugEnabled()) logger.debug("Retrieved value: " + value
-		// + " from config file");
-
-		if ((value == null || value.trim().equals("")))
-			throw new IllegalStateException(
-					"Property: " + key + " was not found in the configuration file: " + filename);
-
-		return value;
-
-	}
-
-	public List<String> getList() {
-		initPropFile();
+	public List<String> getList(String detailStructure) {
+		initPropFile(file_map.get(detailStructure));
 		List<String> fileNames = new ArrayList<String>();
 		for (Map.Entry<Object, Object> e : props.entrySet()) {
 			String key = (String) e.getKey();
 			fileNames.add(key);
-
 		}
-
 		return fileNames;
-
 	}
 
 }

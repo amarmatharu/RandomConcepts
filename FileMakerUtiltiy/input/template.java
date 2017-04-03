@@ -1,31 +1,26 @@
-
-package com.bdna.automation.dim;
+package com.bdna.automation.bdnapublish.TEMPLATEPACKAGE;
 
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
-import com.bdna.automation.service.DIMService;
+import com.bdna.automation.service.TEMPLATESERVICE;
 import com.bdna.automation.template.BaseTestCase;
-import org.springframework.beans.factory.annotation.Autowired;
 
-public class TEMPLATE extends BaseTestCase {
+public class TEMPLATECLASS extends BaseTestCase{
 	private static final long serialVersionUID = 1L;
-
-	@Autowired
-	private DIMService dimService;
 
 	public SampleResult runTest(JavaSamplerContext context) {
 		boolean result = false;
+
 		SampleResult results = new SampleResult();
 		try {
 			setupValues(context);
 			results.sampleStart();
-			result = dimService.getCount(this.getClass().getSimpleName());
+			result = new TEMPLATESERVICE().getCount(this.getClass().getSimpleName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			results.setSuccessful(result);
 		}
-		System.out.println(whoAmI() + "\trunTest():" + "\tTime:\t" + results.getTime());
 		listParameters(context);
 		return results;
 	}

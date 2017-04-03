@@ -3,38 +3,37 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CreateFile {
 	
+	private static String table = "_TAB";
+	private static String view = "_VW";
 	private PropertyUtil util = new PropertyUtil();
 	
-	public final String text_to_search = "public class TEMPLATE";
+	public final String text_to_search_1 = "TEMPLATECLASS";
+	public final String text_to_search_2 = "TEMPLATEPACKAGE";
+	public final String text_to_search_3 = "TEMPLATESERVICE";
 	
-	public void readFileFromDirectory(String fileName)
+	public void readFileFromDirectory(String fromDirectory, String toDirectory, String structure, String detailStructure, String serviceName)
 	{
 			  
 		try{
 			List<String> fileNames = new ArrayList<String>();
-			fileNames = util.getList();
-			
-			//fileNames.addAll(util.getList());
-	
+			fileNames = util.getList(detailStructure);
 			
 			for(int i =0; i < fileNames.size(); i++)
 			{
 				ArrayList<String> lines = new ArrayList<String>();
 				  String line = null;
-				StringBuffer bf = new StringBuffer("C:\\GIT\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\dim\\");
+				StringBuffer bf = new StringBuffer(toDirectory);
 				String fileName_key = fileNames.get(i);
-				bf.append(fileName_key).append(".java");
-				System.out.println("Class name: " + fileName_key);
-				
-				String textToReplace = "public class " + fileName_key;
-				System.out.println("Writing file: " + bf.toString() + " " + fileName_key);
-	    	   File afile =new File("C:\\GIT\\FileMakerUtiltiy\\input\\template.java");
+				bf.append(fileName_key).append(structure).append(".java");
+				String textToReplace_1 = fileName_key + structure;
+				String textToReplace_2 = detailStructure;
+				String textToReplace_3 = serviceName;
+	    	   File afile =new File(fromDirectory);
 	    	   File output =new File(bf.toString());
 
 	    	   FileReader fr = new FileReader(afile);
@@ -43,11 +42,17 @@ public class CreateFile {
 	           while ((line = br.readLine())!= null)
 	           
 	           {
-	                if (line.contains(text_to_search))
+	                if (line.contains(text_to_search_1))
 	                {
-	                	System.out.println("replacing text: " + textToReplace);
-	                    line = line.replace(text_to_search, textToReplace);
-	                    System.out.println("line: " + line);
+	                    line = line.replace(text_to_search_1, textToReplace_1);
+	                }
+	                if (line.contains(text_to_search_2))
+	                {
+	                    line = line.replace(text_to_search_2, textToReplace_2);
+	                }
+	                if (line.contains(text_to_search_3))
+	                {
+	                    line = line.replace(text_to_search_3, textToReplace_3);
 	                }
 	                lines.add(line);
 	            }
@@ -68,16 +73,10 @@ public class CreateFile {
 	            out.flush();
 	            out.close();
 	    	   
-	    	  // Files.copy(afile.toPath(), output.toPath());
+	    	
 	    	   System.out.println("File is moved!");
 	    
-	    	   /*
-	    	   if(afile..renameTo(new File("C:\\GIT\\FileMakerUtiltiy\\output\\" + afile.getName()))){
-	    		System.out.println("File is moved successful!");
-	    	   }else{
-	    		System.out.println("File is failed to move!");
-	    	   }
-*/
+	    	 
 			}
 	    	}catch(Exception e){
 	    		e.printStackTrace();
@@ -87,11 +86,38 @@ public class CreateFile {
 
 	
 	public static void main(String args[])
-	{
-		
-		
+	{		
 		CreateFile obj = new CreateFile();
-		obj.readFileFromDirectory("input/DIM_N_CPU.java");
+		obj.readFileFromDirectory(
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\FileMakerUtiltiy\\input\\template.java",
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\bdnapublish\\dimtable\\",
+				table,
+				"dimtable",
+				"DimTableService");
+		obj.readFileFromDirectory(
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\FileMakerUtiltiy\\input\\template.java",
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\bdnapublish\\dimview\\",
+				view,
+				"dimview",
+				"DimViewService");
+		obj.readFileFromDirectory(
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\FileMakerUtiltiy\\input\\template.java",
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\bdnapublish\\facttable\\",
+				table,
+				"facttable",				
+				"FactTableService");
+		obj.readFileFromDirectory(
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\FileMakerUtiltiy\\input\\template.java",
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\bdnapublish\\factview\\",
+				view,
+				"factview",				
+				"FactViewService");
+		obj.readFileFromDirectory(
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\FileMakerUtiltiy\\input\\template.java",
+				"C:\\Users\\rjames\\Documents\\GitHub\\master_UtilityProjects\\JmeterTestUtility\\src\\main\\java\\com\\bdna\\automation\\bdnapublish\\aggtable\\",
+				table,
+				"aggtable",				
+				"AggTableService");
 	}
 	
 	
