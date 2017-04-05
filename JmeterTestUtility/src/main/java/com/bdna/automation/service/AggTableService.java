@@ -10,7 +10,6 @@ import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
 import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
 
-
 public class AggTableService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -18,24 +17,16 @@ public class AggTableService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-<<<<<<< HEAD
-	private SQLServerDaoImpl sqlServerDaoImpl;
-
-=======
 	private SQLServerDIMDaoImpl sqlServerDaoImpl;
-	
->>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
+
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
-
+		LOGGER.info("Key: " + key);
 		String query = JMeterConstant.getQueryString(AggTableService.class.getSimpleName(), key);
+		LOGGER.info("Query: " + query);
 		sqlCount = sqlServerDaoImpl.getCount(query);
 		oracleCount = oracleDaoImpl.getCount(query);
-		LOGGER.info("--------------------------");
-		LOGGER.info("Key: " + key);
-		LOGGER.info("Query: " + query);
-		LOGGER.info("Count --> SQL Server: " + sqlCount + " " + "Oracle: " + oracleCount);
-		LOGGER.info("--------------------------");
+		LOGGER.info("Count --> SQL Server: {} Oracle: {} ", sqlCount, oracleCount);
 		if (sqlCount == oracleCount)
 			return true;
 		else
