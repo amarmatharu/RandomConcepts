@@ -4,10 +4,16 @@ import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 import com.bdna.automation.service.TEMPLATESERVICE;
 import com.bdna.automation.template.BaseTestCase;
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
+@Component 
 public class TEMPLATECLASS extends BaseTestCase{
 	private static final long serialVersionUID = 1L;
-
+		                                     
+	@Autowired
+	private TEMPLATESERVICE VARIABLESERVICE;
+	
 	public SampleResult runTest(JavaSamplerContext context) {
 		boolean result = false;
 
@@ -15,7 +21,7 @@ public class TEMPLATECLASS extends BaseTestCase{
 		try {
 			setupValues(context);
 			results.sampleStart();
-			result = new TEMPLATESERVICE().getCount(this.getClass().getSimpleName());
+			result = VARIABLESERVICE.getCount(this.getClass().getSimpleName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

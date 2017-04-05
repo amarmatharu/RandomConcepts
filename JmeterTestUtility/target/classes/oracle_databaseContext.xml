@@ -47,11 +47,11 @@
 			<ref local="oracleDataSource" />
 		</property>
 
-		<property name="annotatedClasses">
+	<!--  	<property name="annotatedClasses">
 			<list>
 				<value>com.bdna.automation.entity.BdnaTechnopediaTag</value>
 			</list>
-		</property>
+		</property> -->
 
 		<property name="hibernateProperties">
 			<props>
@@ -76,7 +76,7 @@
 	</bean>
 
 
-	<bean id="oracleDIMDaoImpl" class="com.bdna.automation.dao.impl.OracleDIMDaoImpl">
+	<bean id="oracleDaoImpl" class="com.bdna.automation.dao.impl.OracleDaoImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactoryOracle" />
 		</property>

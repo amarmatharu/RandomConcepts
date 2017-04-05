@@ -11,12 +11,11 @@ import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
 import com.bdna.automation.dao.impl.SQLServerDaoImpl;
 
-
 @Service
 public class DimTableService {
-	
+
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
-	
+
 	@Autowired
 	private OracleDaoImpl oracleDaoImpl;
 

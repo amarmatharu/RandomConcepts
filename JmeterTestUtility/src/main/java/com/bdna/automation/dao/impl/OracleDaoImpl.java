@@ -14,9 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class OracleDaoImpl extends HibernateDaoSupport {
 
 	@Autowired
-	@Qualifier(value="sessionFactoryOracle")
+	@Qualifier(value = "sessionFactoryOracle")
 	private SessionFactory sessionFactoryOracle;
-
 
 	public int getCount(String query) {
 

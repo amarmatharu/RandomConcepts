@@ -13,9 +13,9 @@ import com.bdna.automation.dao.impl.SQLServerDaoImpl;
 
 @Service
 public class DimViewService {
-	
+
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
-	
+
 	@Autowired
 	private OracleDaoImpl oracleDaoImpl;
 

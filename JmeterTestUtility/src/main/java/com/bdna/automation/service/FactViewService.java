@@ -14,7 +14,7 @@ import com.bdna.automation.dao.impl.SQLServerDaoImpl;
 @Service
 public class FactViewService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
-	
+
 	@Autowired
 	private OracleDaoImpl oracleDaoImpl;
 

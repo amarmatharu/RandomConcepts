@@ -15,6 +15,7 @@ public class CreateFile {
 	public final String text_to_search_1 = "TEMPLATECLASS";
 	public final String text_to_search_2 = "TEMPLATEPACKAGE";
 	public final String text_to_search_3 = "TEMPLATESERVICE";
+	public final String text_to_search_4 = "VARIABLESERVICE";
 	
 	public void readFileFromDirectory(String fromDirectory, String toDirectory, String structure, String detailStructure, String serviceName)
 	{
@@ -33,6 +34,7 @@ public class CreateFile {
 				String textToReplace_1 = fileName_key + structure;
 				String textToReplace_2 = detailStructure;
 				String textToReplace_3 = serviceName;
+				String textToReplace_4 = String.valueOf(serviceName.charAt(0)).toLowerCase() + serviceName.substring(1);
 	    	   File afile =new File(fromDirectory);
 	    	   File output =new File(bf.toString());
 
@@ -53,6 +55,10 @@ public class CreateFile {
 	                if (line.contains(text_to_search_3))
 	                {
 	                    line = line.replace(text_to_search_3, textToReplace_3);
+	                }
+	                if (line.contains(text_to_search_4))
+	                {
+	                    line = line.replace(text_to_search_4, textToReplace_4);
 	                }
 	                lines.add(line);
 	            }
