@@ -77,7 +77,7 @@
 	</bean>
 
 
-	<bean id="sqlServerDao" class="com.bdna.automation.dao.impl.SQLServerDaoImpl">
+	<bean id="sqlServerDao" class="com.bdna.automation.dao.impl.SQLServerDIMDaoImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactorySqlServer" />
 		</property>
