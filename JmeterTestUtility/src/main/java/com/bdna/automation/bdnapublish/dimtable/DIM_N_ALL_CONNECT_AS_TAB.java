@@ -2,11 +2,18 @@ package com.bdna.automation.bdnapublish.dimtable;
 
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.bdna.automation.service.DimTableService;
 import com.bdna.automation.template.BaseTestCase;
 
+@Component
 public class DIM_N_ALL_CONNECT_AS_TAB extends BaseTestCase {
 	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private DimTableService dimTableService;
 
 	public SampleResult runTest(JavaSamplerContext context) {
 		boolean result = false;
@@ -14,7 +21,7 @@ public class DIM_N_ALL_CONNECT_AS_TAB extends BaseTestCase {
 		try {
 			setupValues(context);
 			results.sampleStart();
-			result = new DimTableService().getCount(this.getClass().getSimpleName());
+			result = dimTableService.getCount(this.getClass().getSimpleName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
