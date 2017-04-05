@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
+<<<<<<< HEAD
 import com.bdna.automation.dao.impl.SQLServerDaoImpl;
+=======
+import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
+>>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
 
 @Service
 public class AggViewService {
@@ -19,7 +23,7 @@ public class AggViewService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDaoImpl;
+	private SQLServerDIMDaoImpl sqlServerDaoImpl;
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;

@@ -9,9 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-import com.bdna.automation.dao.impl.SQLServerDaoImpl;
+import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
 
+<<<<<<< HEAD
 @Service
+=======
+@Service(value="dimTableService")
+>>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
 public class DimTableService {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
@@ -20,16 +24,19 @@ public class DimTableService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDaoImpl;
+	private SQLServerDIMDaoImpl sqlServerDao;
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
-		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
-		sqlCount = sqlServerDaoImpl.getCount(query);
-		oracleCount = oracleDaoImpl.getCount(query);
 		LOGGER.info("--------------------------");
 		LOGGER.info("Key: " + key);
+
+		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
 		LOGGER.info("Query: " + query);
+		oracleCount = oracleDaoImpl.getCount(query);
+		sqlCount = sqlServerDao.getCount(query);
+		
+
 		LOGGER.info("Count --> SQL Server: " + sqlCount + " " + "Oracle: " + oracleCount);
 		LOGGER.info("--------------------------");
 		if (sqlCount == oracleCount)

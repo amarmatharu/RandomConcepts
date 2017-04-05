@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-import com.bdna.automation.dao.impl.SQLServerDaoImpl;
+import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
+
 
 public class AggTableService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass().getName());
@@ -17,8 +18,13 @@ public class AggTableService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
+<<<<<<< HEAD
 	private SQLServerDaoImpl sqlServerDaoImpl;
 
+=======
+	private SQLServerDIMDaoImpl sqlServerDaoImpl;
+	
+>>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
 

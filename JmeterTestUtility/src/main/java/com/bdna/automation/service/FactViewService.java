@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-import com.bdna.automation.dao.impl.SQLServerDaoImpl;
+import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
 
 @Service
 public class FactViewService {
@@ -19,7 +19,7 @@ public class FactViewService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDaoImpl sqlServerDaoImpl;
+	private SQLServerDIMDaoImpl sqlServerDaoImpl;
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
