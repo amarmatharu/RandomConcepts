@@ -11,10 +11,7 @@ import com.bdna.automation.template.BaseTestCase;
 @Component
 public class DIM_N_ALL_CONNECT_AS_TAB extends BaseTestCase {
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
+
 	@Autowired
 	private DimTableService dimTableService;
 
