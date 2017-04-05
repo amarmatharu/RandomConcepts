@@ -9,11 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-<<<<<<< HEAD
-import com.bdna.automation.dao.impl.SQLServerDaoImpl;
-=======
 import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
->>>>>>> branch 'master' of git@github.com:bdna/UtiltiyProjects.git
 
 @Service
 public class AggViewService {
@@ -27,16 +23,14 @@ public class AggViewService {
 
 	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
 		int oracleCount = 0, sqlCount = 0;
-
+		LOGGER.info("Key: " + key);
 		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
+		LOGGER.info("Query: " + query);
 		System.out.println("query: " + query);
 		sqlCount = sqlServerDaoImpl.getCount(query);
 		oracleCount = oracleDaoImpl.getCount(query);
-		LOGGER.info("--------------------------");
-		LOGGER.info("Key: " + key);
-		LOGGER.info("Query: " + query);
 		LOGGER.info("Count --> SQL Server: " + sqlCount + " " + "Oracle: " + oracleCount);
-		LOGGER.info("--------------------------");
+
 		if (sqlCount == oracleCount)
 			return true;
 		else
