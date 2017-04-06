@@ -185,7 +185,7 @@
 
 	<build>
 		<plugins>
-			 <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
 				<version>2.5.1</version>
@@ -374,11 +374,11 @@
 					</execution>
 				</executions>
 			</plugin>
-				 
-				<plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins </groupId>
 				<artifactId>maven-assembly-plugin </artifactId>
-				
+
 				<configuration>
 					<descriptors>
 						<descriptor>assembly.xml</descriptor>
@@ -397,7 +397,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
