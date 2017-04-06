@@ -30,5 +30,7 @@ public class MapCompareResult {
 	public void setMatch(boolean match) {
 		this.match = match;
 	}
+	
+	
+	}
 
-}

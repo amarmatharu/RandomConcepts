@@ -14,9 +14,6 @@ public class MapUtility {
 
 	@Autowired
 	private MapCompareResult mapCompareResult;
-	
-	@Autowired
-	private MapCountObject mapCountObject;
 
 	public MapCompareResult mapCompareCount(Map<String, Integer> map_1, Map<String, Integer> map_2) {
 		String keyToCompare;
@@ -29,6 +26,7 @@ public class MapUtility {
 			map_1_count = map_1.get(keyToCompare);
 			map_2_count = map_2.get(keyToCompare);
 			if (map_1_count != map_2_count) {
+				MapCountObject mapCountObject = new MapCountObject();
 				mapCountObject.setObjectName(keyToCompare);
 				mapCountObject.setCount_1(map_1_count);
 				mapCountObject.setCount_2(map_2_count);

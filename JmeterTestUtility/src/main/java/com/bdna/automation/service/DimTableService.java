@@ -32,7 +32,7 @@ public class DimTableService {
 	@Autowired
 	private MapUtility mapUtility;
 
-	public boolean getCount() throws ClassNotFoundException, SQLException {
+	public MapCompareResult getCount() throws ClassNotFoundException, SQLException {
 
 		Map<String, String> dimTableMap = (HashMap<String, String>) JMeterConstant
 				.getQueryString(this.getClass().getSimpleName());
@@ -50,16 +50,17 @@ public class DimTableService {
 		MapCompareResult mapCompareResult = mapUtility.mapCompareCount(dimTableSqlServerCount, dimTableOracleCount);
 		if (mapCompareResult.isMatch()) {
 			LOGGER.info("All dimension tables for SQL Server and Oracle match");
-			return true;
+			
 		} else {
 			Iterator<MapCountObject> iterMapCompareRes = mapCompareResult.getUnmatchedObjectList().iterator();
 			while (iterMapCompareRes.hasNext()) {
 				MapCountObject mapCountObject = iterMapCompareRes.next();
 				LOGGER.info("Count mismatch for dimension table: {} --> SQLServer: {}  Oracle: {}",
-						mapCountObject.getObjectName(), mapCountObject.getCount_1(),
-						mapCountObject.getCount_2());
+						mapCountObject.getObjectName(), mapCountObject.getCount_1(), mapCountObject.getCount_2());
 			}
-			return false;
+		
 		}
+		return mapCompareResult;
 	}
+	
 }
