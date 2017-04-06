@@ -334,7 +334,7 @@ public class JMeterConstant {
 		bp_dim_vw_map.put("DIM_N_IT_INV_TASK_AS_VW", "select count(*) from DIM_N_IT_INV_TASK_AS");
 		bp_dim_vw_map.put("DIM_N_IT_INV_TASK_PO_VW", "select count(*) from DIM_N_IT_INV_TASK_PO");
 		bp_dim_vw_map.put("DIM_N_IT_SW_PRODUCT_TAG_MAP_VW", "select count(*) from DIM_N_IT_SW_PRODUCT_TAG_MAP");
-		bp_dim_vw_map.put("DIM_N_MANUFACTURER_INV_VW", "select count(*) from DIM_N_MANUFACTURER_INV");
+		//bp_dim_vw_map.put("DIM_N_MANUFACTURER_INV_VW", "select count(*) from DIM_N_MANUFACTURER_INV");
 		bp_dim_vw_map.put("DIM_N_MATCH_ALL_ADDREMOVE_VW", "select count(*) from DIM_N_MATCH_ALL_ADDREMOVE");
 		bp_dim_vw_map.put("DIM_N_MATCH_ALL_EXE_VW", "select count(*) from DIM_N_MATCH_ALL_EXE");
 		bp_dim_vw_map.put("DIM_N_MATCH_PO_ENT_VW", "select count(*) from DIM_N_MATCH_PO_ENT");

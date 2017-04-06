@@ -1,4 +1,4 @@
-package com.bdna.automation.bdnapublish.dimtable;
+package com.bdna.automation.bdnapublish.facttable;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,19 +15,19 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 @ContextConfiguration(locations = { "classpath:/spring-servlet-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class DimTableTest {
+public class FactTableTest {
 
 	@Autowired
-	private DimTable dimTable;
+	private FactTable factTable;
 
 	@Test
 	public void runTest() {
 
 		JavaSamplerContext context = new JavaSamplerContext(new Arguments());
-		SampleResult result = dimTable.runTest(context);
+		SampleResult result = factTable.runTest(context);
 		System.out.println("Result:" + Boolean.valueOf(result.getResponseDataAsString()));
-		assertEquals(true,Boolean.valueOf(result.getResponseDataAsString()));
-		
+		assertEquals(true, Boolean.valueOf(result.getResponseDataAsString()));
+
 	}
 
 }

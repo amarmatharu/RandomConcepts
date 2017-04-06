@@ -42,14 +42,14 @@ public class DimTableService {
 		for (Entry<String, String> entry : dimTableMap.entrySet()) {
 			String tableName = entry.getKey();
 			String query = entry.getValue();
-			LOGGER.info("Getting count information for table: {}", tableName);
+			LOGGER.info("Getting count information for dimension table: {}", tableName);
 			dimTableSqlServerCount.put(tableName, sqlServerDaoImpl.getCount(query));
 			dimTableOracleCount.put(tableName, oracleDaoImpl.getCount(query));
 		}
 
 		MapCompareResult mapCompareResult = mapUtility.mapCompareCount(dimTableSqlServerCount, dimTableOracleCount);
 		if (mapCompareResult.isMatch()) {
-			LOGGER.info("All Dimension tables and views for SQL Server and Oracle match");
+			LOGGER.info("All dimension tables for SQL Server and Oracle match");
 			return true;
 		} else {
 			Iterator<MapCountObject> iterMapCompareRes = mapCompareResult.getUnmatchedObjectList().iterator();
