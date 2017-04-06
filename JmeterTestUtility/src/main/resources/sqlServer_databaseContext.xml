@@ -47,13 +47,6 @@
 			<ref local="sqlServerDataSource" />
 		</property>
 
-		<!--  <property name="annotatedClasses">
-			<list>
-				<value>com.bdna.automation.entity.BdnaTechnopediaTag</value>
-			</list>
-		</property>
-		-->
-
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect
@@ -77,7 +70,7 @@
 	</bean>
 
 
-	<bean id="sqlServerDao" class="com.bdna.automation.dao.impl.SQLServerDaoImpl">
+	<bean id="sqlServerDaoImpl" class="com.bdna.automation.dao.impl.SQLServerDaoImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactorySqlServer" />
 		</property>

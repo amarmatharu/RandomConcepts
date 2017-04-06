@@ -47,12 +47,6 @@
 			<ref local="oracleDataSource" />
 		</property>
 
-	<!--  	<property name="annotatedClasses">
-			<list>
-				<value>com.bdna.automation.entity.BdnaTechnopediaTag</value>
-			</list>
-		</property> -->
-
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect

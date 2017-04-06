@@ -249,7 +249,7 @@ public class JMeterConstant {
 		bp_dim_tab_map.put("DIM_T_TPC_UUID_HW_TAB", "select count(*) from DIM_T_TPC_UUID_HW$");
 		bp_dim_tab_map.put("DIM_T_TPC_UUID_MANUFACTURER_TAB", "select count(*) from DIM_T_TPC_UUID_MANUFACTURER$");
 		bp_dim_tab_map.put("DIM_T_TPC_UUID_SW_TAB", "select count(*) from DIM_T_TPC_UUID_SW$");
-
+		bp_dim_tab_map.put("BDNA_A_LOGGER", "select count(*) from BDNA_A_LOGGER");
 	}
 
 	static {
@@ -602,9 +602,9 @@ public class JMeterConstant {
 
 	public static final String PROPERTIES_FILENAME = "jmeter.properties";
 
-	public static String getQueryString(String name, String key) {
+	public static Map<String, String> getQueryString(final String name) {
 
-		return hm_service_map.get(name).get(key);
+		return hm_service_map.get(name);
 	}
 
 }

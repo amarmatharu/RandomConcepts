@@ -1,6 +1,10 @@
 package com.bdna.automation.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +13,10 @@ import org.springframework.stereotype.Service;
 
 import com.bdna.automation.constant.JMeterConstant;
 import com.bdna.automation.dao.impl.OracleDaoImpl;
-import com.bdna.automation.dao.impl.SQLServerDIMDaoImpl;
+import com.bdna.automation.dao.impl.SQLServerDaoImpl;
+import com.bdna.automation.entity.MapCompareResult;
+import com.bdna.automation.entity.MapCountObject;
+import com.bdna.automation.utility.MapUtility;
 
 @Service("dimTableService")
 public class DimTableService {
@@ -20,22 +27,39 @@ public class DimTableService {
 	private OracleDaoImpl oracleDaoImpl;
 
 	@Autowired
-	private SQLServerDIMDaoImpl sqlServerDao;
+	private SQLServerDaoImpl sqlServerDaoImpl;
 
-	public boolean getCount(String key) throws ClassNotFoundException, SQLException {
-		int oracleCount = 0, sqlCount = 0;
+	@Autowired
+	private MapUtility mapUtility;
 
-		LOGGER.info("Key: " + key);
-		String query = JMeterConstant.getQueryString(this.getClass().getSimpleName(), key);
-		LOGGER.info("Query: " + query);
-		oracleCount = oracleDaoImpl.getCount(query);
-		sqlCount = sqlServerDao.getCount(query);
-		LOGGER.info("Count --> SQL Server: " + sqlCount + " " + "Oracle: " + oracleCount);
-		if (sqlCount == oracleCount)
+	public boolean getCount() throws ClassNotFoundException, SQLException {
+
+		Map<String, String> dimTableMap = (HashMap<String, String>) JMeterConstant
+				.getQueryString(this.getClass().getSimpleName());
+		Map<String, Integer> dimTableSqlServerCount = new HashMap<String, Integer>();
+		Map<String, Integer> dimTableOracleCount = new HashMap<String, Integer>();
+
+		for (Entry<String, String> entry : dimTableMap.entrySet()) {
+			String tableName = entry.getKey();
+			String query = entry.getValue();
+			LOGGER.info("Getting count information for table: {}", tableName);
+			dimTableSqlServerCount.put(tableName, sqlServerDaoImpl.getCount(query));
+			dimTableOracleCount.put(tableName, oracleDaoImpl.getCount(query));
+		}
+
+		MapCompareResult mapCompareResult = mapUtility.mapCompareCount(dimTableSqlServerCount, dimTableOracleCount);
+		if (mapCompareResult.isMatch()) {
+			LOGGER.info("All Dimension tables and views for SQL Server and Oracle match");
 			return true;
-		else
+		} else {
+			Iterator<MapCountObject> iterMapCompareRes = mapCompareResult.getUnmatchedObjectList().iterator();
+			while (iterMapCompareRes.hasNext()) {
+				MapCountObject mapCountObject = iterMapCompareRes.next();
+				LOGGER.info("Count mismatch for dimension table: {} --> SQLServer: {}  Oracle: {}",
+						mapCountObject.getObjectName(), mapCountObject.getCount_1(),
+						mapCountObject.getCount_2());
+			}
 			return false;
-
+		}
 	}
-
 }
