@@ -19,6 +19,7 @@ public class PropertiesFileReader {
 			fileInput.close();
 
 			Enumeration enuKeys = properties.keys();
+			
 			while (enuKeys.hasMoreElements()) {
 				String key = (String) enuKeys.nextElement();
 				String value = properties.getProperty(key);
