@@ -1,6 +1,7 @@
 package com.bdna.automation.dao.impl;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -22,9 +23,16 @@ public class OracleDaoImpl extends HibernateDaoSupport {
 		Session session = sessionFactoryOracle.getCurrentSession();
 		SQLQuery sqlQuery = session.createSQLQuery(query);
 		BigDecimal result = (BigDecimal) sqlQuery.list().get(0);
-		System.out.println("Count for Oracle: " + result);
 		return result.intValue();
 
+	}
+	
+	
+	public List<String> getAllTableName()
+	{
+		Session session = sessionFactoryOracle.getCurrentSession();
+		List<String> tableNames = session.createSQLQuery("select table_name from user_tables").list();
+		return tableNames;
 	}
 
 }

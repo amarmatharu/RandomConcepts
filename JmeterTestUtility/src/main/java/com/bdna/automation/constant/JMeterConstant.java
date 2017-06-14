@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JMeterConstant {
+	
+	
+	public static String SELECT_QUERY = "select count(*) from  ";
+	
+	private static String ORACLE_PRIMARY = "PRIMARY";
+	private static String ORACLE_SECONDARY = "SECONDARY";
 
 	private static Map<String, String> bp_dim_tab_map = new HashMap<String, String>();
 	private static Map<String, String> bp_fact_tab_map = new HashMap<String, String>();
