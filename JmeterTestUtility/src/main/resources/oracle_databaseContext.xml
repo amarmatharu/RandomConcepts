@@ -59,6 +59,35 @@
 			</props>
 		</property>
 	</bean>
+	
+	
+	<bean id="oracleDataSourceSecondary" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${secondary.database.oracle.driverName}" />
+		<property name="url" value="${secondary.database.oracle.url}" />
+		<property name="username" value="${secondary.database.oracle.username}" />
+		<property name="password" value="${secondary.database.oracle.password}" />
+	</bean>
+
+
+	<bean id="sessionFactoryOracleSecondary"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" >
+		<property name="dataSource">
+			<ref local="oracleDataSourceSecondary" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect
+				</prop>
+				<prop key="hibernate.default_schema">BDNA_PUBLISH</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+				<prop key="use_sql_comments">true</prop>
+				<prop key="format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
 
 	<!-- Transaction Management -->
 
@@ -68,11 +97,24 @@
 		<property name="dataSource" ref="oracleDataSource" />
 		<property name="sessionFactory" ref="sessionFactoryOracle" />
 	</bean>
+	
+	<bean id="txManagerSecondary"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		lazy-init="true" >
+		<property name="dataSource" ref="oracleDataSourceSecondary" />
+		<property name="sessionFactory" ref="sessionFactoryOracleSecondary" />
+	</bean>
 
 
 	<bean id="oracleDaoImpl" class="com.bdna.automation.dao.impl.OracleDaoImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactoryOracle" />
+		</property>
+	</bean>
+	
+	<bean id="oracleDaoImplSecondary" class="com.bdna.automation.dao.impl.OracleDaoImplSecondary">
+		<property name="sessionFactory">
+			<ref local="sessionFactoryOracleSecondary" />
 		</property>
 	</bean>
 
