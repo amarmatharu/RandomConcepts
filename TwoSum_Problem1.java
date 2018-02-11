@@ -1,5 +1,3 @@
-package com.amar.leetCode;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,19 +18,14 @@ public class TwoSum_Problem1 {
 
 	public static int[] twoSum(int[] nums, int target) {
 
-		// to store the numbers which is less than target
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		int remainder = 0;
 		int[] result = new int[2];
 
 		for (int i = 0; i < nums.length; i++) {
 			int start = nums[i];
-
-			// check if the number is less than target
-
 			// what is the remainder we are looking for
 			remainder = target - start;
-
 			if (map.containsKey(remainder)) {
 				// return the indexes; we have found two numbers
 				result[1] = i;
@@ -41,26 +34,8 @@ public class TwoSum_Problem1 {
 			} else {
 				// not found in map then add it in the map
 				map.put(start, i);
-
 			}
-
 		}
-
 		return result;
 	}
-
-	public static void main(String[] args) {
-
-		int[] nums = { -3, 4, 3, 90 };
-		int target = 0;
-
-		TwoSum_Problem1 obj = new TwoSum_Problem1();
-		int[] result = twoSum(nums, target);
-
-		for (int i : result) {
-			System.out.println(i);
-		}
-
-	}
-
 }
