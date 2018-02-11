@@ -1,5 +1,3 @@
-package com.amar.leetCode;
-
 /*
  * Say you have an array for which the ith element is the price of a given stock on day i.
 
@@ -23,41 +21,29 @@ public class BestTimetoBuyStock_Problem121 {
 
 	public static int maxProfit(int[] prices) {
 
-		// if we dont find more than two entries then we cannot make a trade
+	// if we dont find more than two entries then we cannot make a trade
 		if (prices.length < 2) {
 			return 0;
-
 		}
-
 		// to keep track of the buy price
 		int buyPriceIndx = 0;
 		int profit = 0;
 
 		for (int i = 1; i < prices.length; i++)
-
 		{
-
 			// if we find that we have a price that is lower than the current
 			// buy price
 			if (prices[i] < prices[buyPriceIndx])
-
 			{
 				// make that as the new buy price
 				buyPriceIndx = i;
-
 			}
 			// we find a price that is greater than our buying price
 			else {
-
 				// calculate the profit and take the max value
 				profit = Math.max(profit, prices[i] - prices[buyPriceIndx]);
-
 			}
-
 		}
-
 		return profit;
-
 	}
-
 }
